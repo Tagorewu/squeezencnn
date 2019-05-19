@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
 # change this folder path to yours
-NCNN_INSTALL_PATH := /home/tagore/ai/ncnn-release/ncnn-android-lib
+NCNN_INSTALL_PATH := E:/ai/squeezencnn/app/src/main/jni/ncnn-android-lib
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := ncnn

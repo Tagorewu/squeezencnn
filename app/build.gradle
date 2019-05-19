@@ -7,8 +7,15 @@ android {
     defaultConfig {
         applicationId "com.tencent.squeezencnn"
 
-        ndk {
-            moduleName "ncnn"
+        externalNativeBuild {
+            ndk {
+                moduleName "squeezencnn"
+                abiFilters "armeabi-v7a"
+            }
+            cmake {
+                cppFlags "-std=c++11 -fopenmp"
+                abiFilters "armeabi-v7a"
+            }
         }
     }
 
@@ -18,11 +25,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
-
-    sourceSets {
-        main {
-            jniLibs.srcDir("src/main/libs")
-            //jni.srcDirs = []
+    //for ndk-build
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
         }
     }
+/*
+    //for cmake
+    externalNativeBuild {
+        cmake {
+            path file('src/main/jni/CMakeLists.txt')
+        }
+    }
+*/
+    //for ready libs
+/*   sourceSets {
+        main {
+           jniLibs.srcDir("src/main/libs")
+           //jni.srcDirs = []
+        }
+   }
+*/
 }

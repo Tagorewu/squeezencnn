@@ -18,7 +18,8 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         squeezencnn_jni.cpp)
-set(NCNN_PATH /home/tagore/ai/ncnn-android-vulkan-lib)
+
+set(NCNN_PATH E:/ai/squeezencnn/app/src/main/jni/ncnn-android-lib)
 include_directories(${NCNN_PATH}/include)
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -32,10 +33,6 @@ set_target_properties(libncnn
         PROPERTIES IMPORTED_LOCATION
         ${NCNN_PATH}/${ANDROID_ABI}/libncnn.a)
 
-add_library(libvulkan SHARED IMPORTED)
-set_target_properties(libvulkan
-        PROPERTIES IMPORTED_LOCATION
-        ${NCNN_PATH}/../1.1.92.1/x86_64/lib/libvulkan.so)
 find_library(
         log-lib
 
@@ -53,6 +50,5 @@ target_link_libraries( # Specifies the target library.
         # included in the NDK.
         libncnn
         jnigraphics
-        ${libvulkan}
-        z
+
         ${log-lib})
