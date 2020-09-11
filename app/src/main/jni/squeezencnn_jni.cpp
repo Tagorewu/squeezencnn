@@ -109,7 +109,7 @@ JNIEXPORT jboolean JNICALL Java_com_tencent_squeezencnn_SqueezeNcnn_Init(JNIEnv*
     opt.blob_allocator = &g_blob_pool_allocator;
     opt.workspace_allocator = &g_workspace_pool_allocator;
 
-    ncnn::set_default_option(opt);
+    //ncnn::set_default_option(opt);
 
     return JNI_TRUE;
 }

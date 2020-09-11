@@ -1,20 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 9
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 27
+    buildToolsVersion '30.0.2'
 
     defaultConfig {
         applicationId "com.tencent.squeezencnn"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
         externalNativeBuild {
             ndk {
                 moduleName "squeezencnn"
-                abiFilters "armeabi-v7a"
-            }
+             }
+
             cmake {
-                cppFlags "-std=c++11 -fopenmp"
-                abiFilters "armeabi-v7a"
+                cppFlags "-std=c++11 -fopenmp -static-openmp"
+                arguments "-DANDROID_STL=c++_shared"
             }
         }
     }
@@ -25,20 +29,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
     //for ndk-build
-    externalNativeBuild {
-        ndkBuild {
-            path file('src/main/jni/Android.mk')
-        }
+/*    externalNativeBuild {
+      ndkBuild {
+                path file('src/main/jni/Android.mk')
+           }
     }
-/*
+*/
     //for cmake
+    ndkVersion = '21.3.6528147'
     externalNativeBuild {
         cmake {
             path file('src/main/jni/CMakeLists.txt')
         }
     }
-*/
+
     //for ready libs
 /*   sourceSets {
         main {

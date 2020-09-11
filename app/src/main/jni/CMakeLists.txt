@@ -19,8 +19,8 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         squeezencnn_jni.cpp)
 
-set(NCNN_PATH E:/ai/squeezencnn/app/src/main/jni/ncnn-android-lib)
-include_directories(${NCNN_PATH}/include)
+set(NCNN_PATH E:/prjs/squeezencnn/app/src/main/jni/ncnn-android-lib)
+include_directories(${NCNN_PATH}/include/ncnn)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -37,6 +37,7 @@ find_library(
         log-lib
 
         log
+        android
 )
 
 
@@ -50,5 +51,5 @@ target_link_libraries( # Specifies the target library.
         # included in the NDK.
         libncnn
         jnigraphics
-
+        android
         ${log-lib})
